@@ -1,0 +1,89 @@
+/* HERO CSS BEGINS HERE */
+body{
+    background-color: rgba(255,255,255,0.2);
+}
+html{
+    /* opacity: 0.5; */
+}
+#hero-container{
+    height: 500px;
+    position: relative;
+    margin:-12px -8px;
+    background:url(../../media/hero/hero1.jpg) no-repeat;
+}
+.hero-buttons{
+    color: white;
+    font-size: 60px;
+
+    position: absolute;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+.hero-buttons > p {
+    text-shadow: 0px 0px 2px rgba(0,0,0);
+}
+.hero-button-right{
+    right: 0;
+}
+
+.hero-cards-container{
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom:0;
+    height: 350px;
+    display: grid;
+    width: 95%;
+    margin:auto;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    grid-gap: 20px;
+}
+.hero-cards-container > div{
+    height: 400px;
+    position: relative;
+    box-shadow: 0px 0px 5px 0px white;
+    background-color: rgba(245,245,245,0.8);
+}
+.hero-cards-p{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 20px;
+    margin:0;
+
+}
+.hero-image-div{
+    position: relative;
+    height: 330px;
+    width: 300px;
+    margin:auto;
+    margin-top: 10px;
+}
+.hero-image-div > img{
+    width: 300px;
+}
+
+.discover-amazon-container{
+    margin:auto;
+    margin-top: 20px;
+    width: 90%;
+    background-color: white;
+    padding: 10px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.discover-text-top > *{
+    display: inline-block;
+    font-size: 20px;
+}
+.discover-text-top > a{
+    margin-left: 70px;
+    font-size: 13px;
+    text-decoration: none;
+}
+.discover-text-top > a:hover{
+    text-decoration: underline;
+}

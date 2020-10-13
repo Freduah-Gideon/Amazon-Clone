@@ -1,0 +1,114 @@
+#container-all{
+    display: flex;
+    justify-content: space-evenly;
+}
+.product-multiple-images-section {
+    width: max-content;
+}
+
+.multiple-image-single-div {
+    width: 50px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 1px;
+    transition: 200ms;
+}
+
+.multiple-image-single-div:hover {
+    box-shadow: 0px 0px 4px;
+}
+
+.multiple-image-single-div>img {
+    width: inherit;
+    height: inherit;
+}
+.image-container{
+    cursor: pointer;
+    margin-left: 10px;
+    width: 300px;
+}
+.image-container > img{
+    width: inherit;
+}
+.product-details{
+    width: 600px;
+    margin-left: 20px;
+}
+.product-info > p{
+    margin:0;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+.visit-link{
+    font-size: 12px;
+    text-decoration: none;
+}
+.visit-link:hover{
+    text-decoration: underline;
+    color: rgb(214, 140, 2);
+}
+#breadcrumbs {
+    margin: -8px;
+}
+
+#breadcrumbs>* {
+    font-size: 13px;
+    text-decoration: none;
+    transition: 2000ms;
+    color: rgb(78, 78, 78);
+}
+
+#breadcrumbs>a:hover {
+    text-decoration: underline;
+}
+.product-rating-container{
+    display: flex;
+}
+.product-rating-container > div{
+    margin: 0px 10px;
+}
+.product-rating-container > div > p{
+    margin:0;
+    font-size: 13px;
+}
+
+.add-to-cart-section{
+    position: sticky;
+    top:0;
+    right: 20px;
+    border:1px solid rgb(121, 120, 120);
+    width: 300px;
+    border-radius: 10px;
+    padding: 5px;
+    height: 450px;
+    box-shadow: 0px 0px 2px;
+}
+
+.fake-cart-button {
+    width: 300px;
+    height: 35px;
+    background-color: rgb(233, 174, 12);
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+    border: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    text-align: center;
+
+}
+.fake-cart-button > *{
+    margin:0;
+    display: inline-block;
+}
+.fake-cart-button > span{
+    float:left;
+    color: black;
+    font-size: 20px;
+    margin: 5px;
+}
+.fake-cart-button > p{
+    margin-top: 5px;
+}

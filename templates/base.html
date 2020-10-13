@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more</title>
+    <link rel="stylesheet" href="{% static 'styles/general_snippets/header_snippet/index.css' %}">
+    <link rel="stylesheet" href="{% static 'font/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/general_snippets/footer_snippet/footer.css' %}">
+    {% block stylesheets %}
+    {% endblock stylesheets %}
+    <link rel="shortcut icon" href="../media/logo.jpeg" type="image/x-icon">
+</head>
+{% block header_nav %}
+{% include 'general_snippets/header/header.html' %}
+{% endblock header_nav %}
+
+{% block side_nav %}
+{% include 'general_snippets/header/side_header.html' %}
+{% endblock side_nav %}
+<br>
+<section id="second-navbar-container">
+    <div class="deliver ">
+        <span class="fa fa-map-marker-alt"></span>
+        <p>Deliver to Ghana</p>
+    </div>
+    <div class="second-navbar-links">
+        <a href="">Today's Deals</a>
+        <a href="">Customer Service</a>
+        <a href="">Gift Cards</a>
+        <a href="">Registery</a>
+        <a href="">Sell</a>
+    </div>
+
+    <div class="second-navbar-covid-response-div">
+        <a href="">Amazon's response to COVID-19</a>
+    </div>
+</section>
+<section class="navbar-late-deliver-notice">
+    <p>We are delivering to your region with limited shipping options. Please Expect extended delivery time. <a
+            href="">Learn More</a></p>
+</section>
+
+<body>
+    <style>
+        #message-div{
+            position: absolute;
+            left:0;
+            right: 0;
+            top:0;
+            text-align: center;
+            background-color: rgb(1, 171, 177);
+            user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+        }
+        #message-span{
+            float:right;
+            margin:-65px 10px;
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+        }
+        #message-p{
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+    {% if messages %}
+    {% for message in messages %}
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
+    <div id='message-div' onclick="this.classList.add('hide')">
+        <p id='message-p'>{{message}}</p>
+        <span id='message-span'>&times;</span>
+    </div>
+    {% endfor messages %}
+    {% endif %}
+    <!-- HERO -->
+    {% block checkout %}
+
+    {% endblock checkout %}
+    {% block homepage %}
+
+    {% endblock homepage %}
+
+    {% block detailpage %}
+
+    {% endblock detailpage %}
+
+    {% block cart %}
+
+    {% endblock cart %}
+</body><br>
+{% block footer %}
+{% include 'general_snippets/footer/footer.html' %}
+{% endblock footer %}
+{% block scripts %}
+{% endblock scripts %}
+<script src="{% static 'scripts/header.js' %}"></script>
+
+
+
+</html>

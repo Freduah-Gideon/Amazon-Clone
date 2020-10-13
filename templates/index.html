@@ -1,0 +1,298 @@
+{%extends 'base.html' %}
+{% load static %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'styles/main/homepage.css' %}">
+{% endblock stylesheets %}
+
+{% block homepage %}
+  <!-- HERO -->
+  <section id="hero-container">
+    <div class="hero-buttons hero-button-left">
+      <p>&LeftAngleBracket;</p>
+    </div>
+    <div class="hero-buttons hero-button-right">
+      <p>&RightAngleBracket;</p>
+    </div>
+
+    <div class="hero-cards-container">
+      <div class="hero-card">
+        <p class="hero-cards-p">Shop By Category</p>
+      </div>
+      <div class="hero-card">
+        <p class="hero-cards-p">AmazonBasics</p>
+        <div class="hero-image-div">
+          <img src="{% static 'media/amazon-basics.jpg' %}" alt="">
+        </div>
+      </div>
+      <div class="hero-card">
+        <p class="hero-cards-p">Electronics</p>
+        <div class="hero-image-div">
+          <img src="{% static 'media/amazon-basics.jpg' %}" alt="">
+        </div>
+      </div>
+      <div class="hero-card">
+        {% if user.is_authenticated %}
+        <p class="hero-cards-p">Hello Gideon
+        </p>
+        <button class="b-a-l">View Today's Deals</button>
+        {% else %}
+        <p class="hero-cards-p">Sign In For The Best Experience
+        </p>
+        <button class="b-a-l">Sign In Securely</button>
+        {% endif %}
+      </div>
+    </div>
+
+  </section><br><br><br><br><br>
+  <section class="discover-amazon-container">
+    <div class="discover-text-top">
+      <p>Discover Amazon</p>
+      <a href="">Click to learn more</a>
+    </div>
+    <section class="discover-flex-container" style="display: flex;">
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover.png' %}" alt="">
+      </div>
+      
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover3.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover4.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover5.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+    </section>
+  </section>
+  <section class="discover-amazon-container">
+    <div class="discover-text-top">
+      <p>Must have Wireless products</p>
+      <a href="">See more</a>
+    </div>
+    <section class="discover-flex-container" style="display: flex;">
+      <style>
+
+        .backend-product-image-div:hover{
+          box-shadow:0px 0px 5px;
+        }
+        .backend-product-image-div{
+          width: 150px;
+          height: 200px;
+          cursor: pointer;
+          padding:10px 20px;
+          transition: 500ms;
+        }
+        .backend-product-image-div > img{
+          width: inherit;
+          height: inherit;
+        }
+      </style>
+      {% for product in wireless %}
+      <div class="discover-image-div backend-product-image-div"  >
+        <img src="{{product.image.url}}" data-id='{{product.id}}' alt="" onclick="showFullProduct(event)" data-name='{{product.name}}'>
+      </div>
+      {% endfor %}
+    </section>
+  </section>
+  <section class="discover-amazon-container">
+    <div class="discover-text-top">
+      <p>Gifts in Video Games under $30</p>
+      <a href="">See more</a>
+    </div>
+    <section class="discover-flex-container" style="display: flex;">
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover.png' %}" alt="">
+      </div>
+      
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover3.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover4.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover5.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+    </section>
+  </section>
+  <section class="discover-amazon-container">
+    <div class="discover-text-top">
+      <p>Discover Amazon</p>
+      <a href="">Click to learn more</a>
+    </div>
+    <section class="discover-flex-container" style="display: flex;">
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover.png' %}" alt="">
+      </div>
+      
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover3.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover4.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover5.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+    </section>
+  </section>
+  <section class="discover-amazon-container">
+    <div class="discover-text-top">
+      <p>Best Sellers In Kitchen</p>
+      <a href="">See more</a>
+    </div>
+    <section class="discover-flex-container" style="display: flex;">
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover.png' %}" alt="">
+      </div>
+      
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover3.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover4.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover5.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+    </section>
+  </section>
+  <section class="discover-amazon-container">
+    <div class="discover-text-top">
+      <p>Amazon Top Sellers</p>
+      <a href="">See more</a>
+    </div>
+    <section class="discover-flex-container" style="display: flex;">
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover.png' %}" alt="">
+      </div>
+      
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover3.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover4.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover5.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+    </section>
+  </section>
+  <section class="discover-amazon-container">
+    <div class="discover-text-top">
+      <p>Our Favorite Toys</p>
+      <a href="">See more</a>
+    </div>
+    <section class="discover-flex-container" style="display: flex;">
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover.png' %}" alt="">
+      </div>
+      
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover3.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover4.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover5.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+    </section>
+  </section>
+  <section class="discover-amazon-container">
+    <div class="discover-text-top">
+      <p>Home Decor Under $20</p>
+      <a href="">See more</a>
+    </div>
+    <section class="discover-flex-container" style="display: flex;">
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover.png' %}" alt="">
+      </div>
+      
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover3.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover4.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover5.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+    </section>
+  </section>
+  <section class="discover-amazon-container">
+    <div class="discover-text-top">
+      <p>Top Beauty & Personal Care produts</p>
+      <a href="">See more</a>
+    </div>
+    <section class="discover-flex-container" style="display: flex;">
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover.png' %}" alt="">
+      </div>
+      
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover3.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover4.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover5.jpg' %}" alt="">
+      </div>
+      <div class="discover-image-div">
+        <img src="{% static 'media/discover/discover2.jpg' %}" alt="">
+      </div>
+    </section>
+  </section>
+
+  {% endblock homepage %}
+{% block scripts %}
+<script src="{% static 'scripts/main/homepage.js' %}"></script>
+{% endblock scripts %}
+</html>

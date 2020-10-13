@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+{% block checkout %}
+<style>
+  .form {
+    background-color: rgba(255, 255, 255, 1);
+    width: 400px;
+    padding-left: 50px;
+    border-radius: 10px;
+  }
+
+  .form>* {
+    display: block;
+    margin: 13px auto;
+  }
+
+  .form-input,
+  #id_country {
+    display: block;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, .5);
+    height: 30px;
+    padding: 5px;
+    width: 500px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+  }
+
+  .hide {
+    display: none !important;
+  }
+
+  p {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .form-row {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .form-row>label {
+    display: block;
+  }
+
+  .form-row>input {
+    width: 95px;
+    height: 25px;
+    margin: auto;
+  }
+
+  .error-div {
+    background-color: rgb(153, 142, 161);
+    color: white;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  .error-div>* {
+    margin: 0;
+    padding: 5px;
+  }
+
+  .error-span {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    color: white;
+  }
+
+  .additional-info {
+    min-height: 200px;
+    max-height: 200px;
+  }
+
+  button {
+    background-color: #f1f1f1;
+    color: black;
+    font-size: 16px;
+    padding: 16px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  button:hover {
+    background-color: black;
+    color: #f1f1f1;
+  }
+</style>
+<h1>Shipping Address</h1>
+<hr>
+{% if shipping_addresses.count == 0 %}
+Fuck off
+{% else %}
+{% for address in shipping_addresses %}
+<style>
+  .shipping_div {
+    transition: 300ms;
+    margin: 40px;
+    padding: 10px;
+    width: max-content;
+    display: inline-block;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  }
+
+  .shipping_div:hover {
+    margin-top: 35px !important;
+  }
+</style>
+
+<div class="shipping_div">
+  <h2>Shipping Address {{forloop.counter}} To {{address.country.name}}</h2>
+  <p>Ship Items To: {{address.country.name}}</p>
+  <p>Region: {{address.region}}</p>
+  <p>City: {{address.city}}</p>
+  <p>Address 1: {{address.address_1}}</p>
+  <p>Address 2: {{address.address_2}}</p>
+  {% if address.phone %}
+  <p>Phone Number: {{address.phone}}</p>
+  {% endif %}
+  <p id='option'>Pay With {{address.payment_option}}</p>
+
+  <div style="text-align: center;">
+    <button onclick="remove_shipping_address(event)" data-id={{address.id}} data-location = "{% url 'order:remove_shipping_address' address.id %}" >Remove</button>
+    <button onclick="ajax_shipping_submission(event)" data-id={{address.id}} data-location = "{% url 'order:custom_checkout' %}">Use This Address</button>
+    {% csrf_token %}
+  </div>
+</div>
+<script>
+  function remove_shipping_address(event) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = () => {
+      const response = JSON.parse(xhttp.responseText)
+      if (response['OK']) {
+        setTimeout(event.target.parentElement.parentElement.remove(), '5000ms')
+      }
+    }
+    xhttp.onerror = () => {
+    }
+    xhttp.open('GET', event.target.getAttribute('data-location'), true)
+    xhttp.send()
+  }
+  function ajax_shipping_submission(event) {
+    const data = new FormData();
+    data.append('csrfmiddlewaretoken',document.querySelector('input[name="csrfmiddlewaretoken"]').value)
+    data.append('id',event.target.getAttribute('data-id'))
+    const xhttp = new XMLHttpRequest();
+
+    console.log(document.querySelector('input[name="csrfmiddlewaretoken"]').value)
+    xhttp.onload = () => {
+      const response = JSON.parse(xhttp.responseText)
+      if(response['redirect']){
+        window.location = response['redirect']
+      }
+      else if(response['']){
+
+      }
+    }
+    xhttp.onerror = () => {
+    }
+
+    xhttp.open('POST', event.target.getAttribute('data-location'), true)
+    xhttp.send(data)
+  }
+</script>
+{% endfor %}
+{% endif %}
+<form action="" class="form" method="POST">{% csrf_token %}
+  {{form.as_p}}
+
+  <button>Submit</button>
+</form>
+
+{% endblock checkout %}
+
+{% block scripts %}
+
+{% endblock scripts %}

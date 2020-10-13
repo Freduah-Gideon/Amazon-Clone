@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- HERO -->
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'styles/main/detail.css' %}">
+{% endblock stylesheets %}
+
+{% block detailpage %}
+<style>
+    .fake-alert{
+        position: fixed;
+        left:0;
+        top:0;
+        bottom: 0;
+        display: flex;
+        z-index: 5;
+        justify-content: center;
+        align-items: center;
+        right: 0;
+        background-color: rgba(0,0,0,.9);
+    }
+    .fake-alert > div > p{
+        margin:0;
+        margin-top: 10px;
+
+    }
+    .fake-alert > div{
+        width: 250px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 5px;
+        border:2px solid orange;
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-user-drag: none;
+        height: 40px;
+        background-color: brown;
+        color: white;
+        margin: 0 20px;
+
+    }
+    .hide{
+        display: none;
+    }
+</style>
+
+<div class="fake-alert hide">
+    <div onclick="this.parentElement.classList.add('hide')"><p>Cancel</p></div>
+    <div><p>Proceed To Checkout</p></div>
+</div>
+<div id='breadcrumbs'>
+    <a href="">{{product.category}} </a> <span> ></span>
+    <a href="">{{product.sub_category}} </a> <span>></span>
+    <a href="">{{product.name|truncatechars:40}}</a>
+</div>
+<br><br>
+<article id='container-all'>
+    <section class="product-multiple-images-section">
+        <div class="multiple-image-single-div">
+            <img src="{{product.image.url}}" alt="">
+        </div>
+        <div class="multiple-image-single-div">
+            <img src="{{product.image.url}}" alt="">
+        </div>
+        <div class="multiple-image-single-div">
+            <img src="{{product.image.url}}" alt="">
+        </div>
+        <div class="multiple-image-single-div">
+            <img src="{{product.image.url}}" alt="">
+        </div>
+    </section>
+    <section class="image-container">
+        <img src="{{product.image.url}}" alt="">
+    </section>
+
+    <section class="">
+        <div class="product-details">
+            <div class="product-info">
+                <p class="product-name">{{product.name}}</p>
+                <a href="" class="visit-link">Visit the {{product.sub_category}} section</a>
+            </div>
+            <div class="product-rating-container">
+                <div>
+                    <p>Rating</p>
+                </div>
+                <div class="rating-count">
+                    <p>4,453</p>
+                </div>
+                <div>
+                    <p>65 Answered Questions</p>
+                </div>
+            </div>
+
+            <div class="price-div">
+                <p>Price: <span style="color: red; font-size: 25px;">${{product.price}}</span> </p>
+                {% if product.in_stock > 1 %}
+                <p style="color: rgb(87, 139, 8);">In Stock</p>
+                {% else %}
+                <p>Out Of Stock</p>
+                {% endif %}
+            </div>
+
+            <ul>
+                {% for features in product.features.all %}
+                <li>{{features.feature}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </section>
+
+    <section class="add-to-cart-section">
+        <form action="{% url 'order:modify-cart' %}" id='add-to-cart-form' method="POST">
+            {% csrf_token %}
+            <input type="text" name="product-id" value="{{product.id}}" readonly hidden>
+            <p>Price : ${{product.price}}</p>
+            {% if product.in_stock > 1 %}
+            <select name="quantity" id="">
+                <option value="1">Quantity 1</option>
+            </select>
+            {% else %}
+            <p style="color: rgb(255, 0, 0);">Out Of Stock</p>
+            {% endif %}<br><br>
+            <button class="fake-cart-button">
+                <span class="fa fa-shopping-cart"></span>
+                <p>Add to cart</p>
+            </button>
+            <p style="font-size: 15px;">Sold By: Jumbo</p>
+            <p style="font-size: 12px;">Return Policy: Items Are Subject To Returns Within 30 Days Of Purchase And
+                Without Damage</p>
+        </form>
+    </section>
+</article>
+{% endblock detailpage %}
+
+
+{% block scripts %}
+<script defer src="{% static 'scripts/main/detail.js' %}"> </script>
+{% endblock scripts %}

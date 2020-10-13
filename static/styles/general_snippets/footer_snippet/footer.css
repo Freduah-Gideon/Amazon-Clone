@@ -1,0 +1,46 @@
+#back-to-top{
+    margin:0;
+    box-sizing: border-box;
+    margin:-8px;
+    height: 50px;
+    position: relative;
+    align-items: center;
+    display: flex;
+    background-color: rgb(7, 1, 26);
+}
+#back-to-top > a{
+    color: white;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top:0;
+    bottom: 0;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    padding-top: 12px;
+}
+.footer-parents{
+    background-color: #232F3E;;
+    margin:-8px;
+    padding:100px;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+.first-footer-links > div{
+    margin-inline-start: 100px;
+}
+.first-footer-links > div > h3{
+    margin:0;
+}
+.first-footer-links > div > * {
+    padding-top: 10px;
+}
+.first-footer-links > div > a{
+    display: block;
+    line-height: 1.5;
+    font-size: 12px;
+    text-decoration: none;
+    color: white;
+}

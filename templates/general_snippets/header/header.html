@@ -1,0 +1,166 @@
+{% load static %}
+{% load templatetags %}
+<header>
+  <div id='navbar-toggle'>
+    <div class="navbar-border"></div>
+    <div class="navbar-border"></div>
+    <div class="navbar-border"></div>
+  </div>
+  <div class="navbar-logo">
+    <img src="{% static 'media/logo.svg' %}" alt="">
+  </div>
+  <div class="navbar-main-search-div">
+    <form action="" class="navbar-search-form">
+      <select name="" id="navbar-search-select">
+        <option value="">All</option>
+        <option value="a_c">Arts And Crafts</option>
+        <option value="auto">Automotive</option>
+        <option value="baby">Baby</option>
+        <option value="b_p_c">Beauty & Personal Care</option>
+        <option value="books">Books</option>
+        <option value="computers">Computers</option>
+        <option value="d_m">Digital Music</option>
+        <option value="electronics">Electronics</option>
+        <option value="k_d">Kindle Store</option>
+        <option value="p_m">Prime Video</option>
+        <option value="m_f">Men's Fashion</option>
+        <option value="w_f">Women's Fashion</option>
+        <option value="g_f">Girl's Fashion</option>
+        <option value="b_f">Boy's Fashion</option>
+        <option value="deals">Deals</option>
+        <option value="h_h">Health & Household</option>
+        <option value="h_k">Home and Kitchen</option>
+        <option value="i_s">Industrial and Scientific</option>
+        <option value="luggage">Luggage</option>
+        <option value="m_t">Movies and TV</option>
+        <option value="m_c_v">Music CD's and Vinyl</option>
+        <option value="p_s">Pet's Supply</option>
+        <option value="software">Software</option>
+        <option value="s_o">Sports And Outdoors</option>
+        <option value="t_h">Tools And Home Improvements</option>
+        <option value="t_g">Toys And Games</option>
+        <option value="v_g">Video Games</option>
+      </select>
+      <input type="text">
+    </form>
+    <div class="navbar-search-icon">
+      <p class="fa fa-search"></p>
+    </div>
+  </div>
+  <div class="navbar-language-event-div" id='navbar-language-event-div'>
+    <div id="navbar-flag-and-arrow-div">
+      <a href="" class="navbar-language-link">
+        <img src="{% static 'media/language.svg' %}" class="navbar-language-flag" alt="">
+      </a>
+      <span style="color: white; margin-left: 5px;">&triangledown;</span>
+    </div>
+    <section class="language-options-container" id='language-options-container'>
+      <p class="language-text">Change language <a href="">Learn More</a></p>
+      <form action="" id="language-select-form">
+        <label for="english">
+          <input type="radio" name="language" value="english" id="english">
+          <p>English - EN</p>
+        </label>
+        <label for="espanol">
+          <input type="radio" name="language" value="espanol" id="espanol">
+          <p>Espanol - ES</p>
+        </label>
+        <label for="chinese">
+          <input type="radio" name="language" value="language" id="chinese">
+          <p>Chinese - CH</p>
+        </label>
+        <label for="deutsch">
+          <input type="radio" value="deutsch" name="language" id="deutsch">
+          <p>Deutsch - DE</p>
+        </label>
+        <label for="portugese">
+          <input type="radio" value="portugese" name="language" id='portugese'>
+          <p>Portugese - PT</p>
+        </label>
+        <label for="korean">
+          <input type="radio" value="korean" name="language" id="korean">
+          <p>Korean - KO</p>
+        </label>
+        <label for="twi">
+          <input type="radio" value="twi" name="language" id="twi">
+          <p>Twi - TW</p>
+        </label>
+      </form>
+
+    </section>
+  </div>
+  <div class="navbar-user-display" id='navbar-user-display'>
+    {% if user.is_authenticated %}
+    <p>Hello, {{user.first_name}}</p>
+    {% else %}
+    <p>Sign In</p>
+    {% endif %}
+    <h2 class="navbar-accounts-and-lists">Account & Lists <span>&triangledown;</span></h2>
+    <section id="navbar-accounts-and-lists">
+      <div class="navbar-accounts-and-lists-top">
+        {% if user.is_authenticated %}
+        <p style="font-size: 20px;">Hello, {{user.first_name}}</p>
+        {% else %}
+        <button>Sign In</button>
+        <p>New Customer? <a href="">Start Here</a></p>
+        {% endif %}
+      </div>
+      <section id="neutral-container-for-flex">
+        <div class="navbar-accounts-and-lists-neutral" id='navbar-lists'>
+          <h3 style="color: black; font-size: 20px;">Your Lists</h3>
+          <a href="">Create a list</a>
+          <a href="">Find a List Or Registery</a>
+          <a href="">Find a Gift</a>
+          <a href="">Save Items From The Web</a>
+          <a href="">Wedding Registery</a>
+          <a href="">Baby Registery</a>
+          <a href="">Friends & Family Gifting</a>
+          <a href="">AmazonSmile Charity Lists</a>
+          <a href="">Pantry Lists</a>
+          <a href="">Your Hearts</a>
+          <a href="">Explore Idea Lists</a>
+          <a href="">Explore Showroom</a>
+        </div>
+
+        <div class="navbar-accounts-and-lists-neutral" id='navbar-account'>
+          <h3 style="color: black; font-size: 20px;">Your Account</h3>
+          <a href="">Your Account</a>
+          <a href="">Your Orders</a>
+          <a href="">Your Recommendations</a>
+          <a href="">Memberships & Subscriptions</a>
+          <a href="">Your Garage</a>
+          <a href="">Your Fanshop</a>
+          <a href="">Your Pets</a>
+          <a href="">Your Content and Devices</a>
+          <a href="">Your Music Library</a>
+          <a href="">Your Amazon Drive</a>
+          <a href="">Your Prime Video</a>
+          <a href="">Your Kindle Unlimited</a>
+          <a href="">Your Watchlist</a>
+          <a href="">Your Video Purchases & Rentals</a>
+          <a href="">Your Android Apps & Devices</a>
+        </div>
+      </section>
+    </section>
+  </div>
+  <div class="navbar-return-and-orders">
+    <p>Returns</p>
+    <span>& Orders</span>
+  </div>
+
+  <div class="navbar-cart">
+    <p class="fa fa-shopping-cart navbar-cart-icon"></p>
+    <div class="navbar-car-items-count">
+      {{cart_count}}
+    </div>
+    <script>
+      document.querySelector('.navbar-logo').addEventListener("click",()=>{
+        window.location = `http://${window.location.host}`
+      })
+      document.querySelector('.navbar-cart').addEventListener("click", () => {
+        window.location = '{% url "order:cart" %}'
+      })
+    </script>
+  </div>
+
+</header>

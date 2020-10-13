@@ -1,0 +1,20 @@
+.cart-empty-container {
+    display: flex;
+}
+
+.emtpy-cart-text>p {
+    margin: 0;
+}
+
+.empty-image-div {
+    width: 350px;
+
+}
+
+.empty-image-div>img {
+    width: inherit;
+}
+
+.empty-cart-text {
+    margin-left: 10px;
+}
