@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+   {% block title %}
+
+   {% endblock title %}
 </head>
 
 <body>
@@ -37,50 +39,13 @@
             box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
         }
     </style>
-    <form action="" onsubmit="form_submission(event)">
-        {% csrf_token %}
-        <br>
-        <legend style="text-align: center;">Registration Form</legend>
-        <p id='error' style='position:absolute; padding:10px; left:0; top:0; margin:0;text-align: center;
-        right:0; background-color: black; color: white;'>Error Here</p>
-        {{form.as_p}}
-        <div style="margin-top:20px; text-align: center;">
-            <button style="width: 50%; height: 50px;">Register</button>
-            <p>Already Have An Account? <a href="">Log In</a></p>
-        </div>
-    </form>
-    <script>
-        function form_submission(event) {
-            const error = document.getElementById('error')
-            event.preventDefault()
-            const xhttp = new XMLHttpRequest();
-            const data = new FormData(event.target)
-            xhttp.onload = () => {
-                const response = JSON.parse(xhttp.responseText)
-                console.log(response)
-                if (response['email']){
-                    error.innerHTML = response['email']
-                }
-                else if (response['password']){
-                    error.innerHTML = response['password']
-                }
-                else if (response['phone']){
-                    error.innerHTML = response['phone']
-                }
-                else if (response['first_name']){
-                    error.innerHTML = response['first_name']
-                }
-                else{
-                        error.innerHTML = response['OK']
-                }
-            }
-            xhttp.onerror = () => {
-                console.log(xhttp.status)
-            }
-            xhttp.open('POST', event.target.getAttribute('action'), true)
-            xhttp.send(data)
-        }
-    </script>
+    {% block register %}
+
+    {% endblock register %}
+    
+    {% block login %}
+
+    {% endblock login %}
 </body>
 
 </html>

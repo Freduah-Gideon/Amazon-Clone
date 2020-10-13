@@ -1,0 +1,40 @@
+{% extends 'authentication/base.html' %}
+{% block title %}
+<title>Amazon | Login</title>
+{% endblock title %}
+{% block login %}
+<form action="" onsubmit="form_submission(event)">
+    {% csrf_token %}
+    <br><br>
+    <legend style="text-align: center;">Login Form</legend><br>
+    <p id='error' style='position:absolute; padding:10px; left:0; top:0; margin:0;text-align: center;
+    right:0; background-color: black; color: white;'>Error Here</p>
+    <input type="email" placeholder="Enter Your Email Address" name='email' required><br><Br>
+    <input type="password" name="password" id="" placeholder="Enter Your Password" required>
+    <div style="margin-top:20px; text-align: center;">
+        <button style="width: 50%; height: 50px;">Login</button>
+        <p>Don't Have An Account? <a href="{% url 'auth:register' %}">Register</a> </p>
+        <p>Forgot Password ? <a href="">Reset</a></p>
+    </div>
+</form>
+<script>
+    function form_submission(event) {
+        const error = document.getElementById('error')
+        event.preventDefault()
+        const xhttp = new XMLHttpRequest();
+        const data = new FormData(event.target)
+        xhttp.onload = () => {
+            const response = JSON.parse(xhttp.responseText)
+            console.log(response)
+            const which = response['error'] ? error.innerHTML = response['error'] : 
+            window.location = 'http://localhost:8000/'
+        }
+        xhttp.onerror = () => {
+            console.log(xhttp.status)
+        }
+        xhttp.open('POST', event.target.getAttribute('action'), true)
+        xhttp.send(data)
+    }
+</script>
+
+{% endblock login %}

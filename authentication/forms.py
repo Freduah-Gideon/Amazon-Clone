@@ -22,3 +22,8 @@ class UserCreationForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['email', 'first_name', 'phone', 'password', 'password2']
+
+class UserLoginForm(forms.ModelForm):
+    class Meta: 
+        model = User
+        fields = '__all__'

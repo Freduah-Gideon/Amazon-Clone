@@ -42,7 +42,7 @@ class Order(models.Model):
             total += float(each_item.get_price())
             if self.coupon:
                 total -= float(self.coupon.coupon_worth)
-        return float(total).__ceil__()
+        return float(total)
 
 PAYMENT_OPTIONS = (
     ('m', 'Mtn MoMo'),

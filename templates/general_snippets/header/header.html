@@ -101,8 +101,8 @@
         {% if user.is_authenticated %}
         <p style="font-size: 20px;">Hello, {{user.first_name}}</p>
         {% else %}
-        <button>Sign In</button>
-        <p>New Customer? <a href="">Start Here</a></p>
+        <button><a href="{% url 'auth:login' %}" style="color: black; text-decoration: none;">Sign In</a></button>
+        <p>New Customer? <a href="{% url 'auth:register' %}">Start Here</a></p>
         {% endif %}
       </div>
       <section id="neutral-container-for-flex">
